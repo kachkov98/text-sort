@@ -6,5 +6,6 @@ var sort_8c =
     [ "get_data", "sort_8c.html#a935c19f66672be76c795a46088418c6e", null ],
     [ "main", "sort_8c.html#a0ddf1224851353fc92bfbff6f499fa97", null ],
     [ "rus_isalpha", "sort_8c.html#a60724ac554809f69708330336d181f26", null ],
+    [ "rus_tolower", "sort_8c.html#ac5848ac3bb8ee2deea120cebb5ecb44a", null ],
     [ "strings_number", "sort_8c.html#a53302e0a710546d9cf483f39439226d6", null ]
 ];

@@ -94,6 +94,22 @@ int rus_isalpha (char c)
 }
 
 /*!
+ * C function tolower (char) doesn't support locale; that's analog for it
+ * @note function doesn't support utf-8; input data must be in one-byte encoding
+ * @note use std::isalpha (std::locale) in C++
+ * @param c character
+ * @return the lowercase equivalent to c
+ */
+char rus_tolower (char c)
+{
+	if ('A'<=c && c<='Z')
+		return 'a' + c - 'A';
+	if ('À'<=c && c<='ß')
+		return 'à' + c - 'À';
+	return c;
+}
+
+/*!
  * compare two strings from the begin
  * @param *arg1 pointer to pointer to first string
  * @param *arg2 pointer to pointer to second string
@@ -110,7 +126,7 @@ int cmp_from_begin (const void *arg1, const void *arg2)
 			a1++;
 		while (*a2 && !rus_isalpha(*a2))
 			a2++;
-		int cmp = *a1 - *a2;
+		int cmp = rus_tolower (*a1) - rus_tolower (*a2);
 		if (cmp)
 			return cmp;
 		if (*a1)
@@ -138,7 +154,7 @@ int cmp_from_end (const void *arg1, const void *arg2)
 			a1--;
 		while (a2 > *(char **)arg2 && !rus_isalpha(*a2))
 			a2--;
-		int cmp = *a1 - *a2;
+		int cmp = rus_tolower (*a1) - rus_tolower (*a2);
 		if (cmp)
 			return cmp;
 		if (a1 >= *(char **)arg1)
